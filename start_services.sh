@@ -42,6 +42,9 @@ if [ ! -e /.initialized ]; then
     touch /.initialized
 fi
 
+# Remove stale lock file that could prevent service from starting up
+rm /var/lock/netatalk
+
 # Initiate the timemachine daemons
 chown -R $AFP_LOGIN:$AFP_LOGIN /timemachine
 /etc/init.d/netatalk start
